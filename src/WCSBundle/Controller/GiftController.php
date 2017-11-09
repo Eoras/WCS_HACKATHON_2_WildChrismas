@@ -52,8 +52,9 @@ class GiftController extends Controller
             $em->persist($gift);
             $em->flush();
 
-            return $this->redirectToRoute('gift_edit', array(
+            return $this->redirectToRoute('gift_new', array(
                 'id' => $gift->getId(),
+                'child'=> $child,
                 ));
         }
 

@@ -5,10 +5,14 @@
 
     <div class="form-group">
     {{ form_start(form) }}
-
+{{ child.id }}
         {{ form_label(form.name, 'Jouet : ') }}
         {{ form_widget(form.name) }}
         {{ form_errors(form.name) }}
+
+        {{ form_label(form.child_id, 'Jouet : ') }}
+        {{ form_widget(form.child_id) }}
+        {{ form_errors(form.child_id) }}
 
 
         <input type="submit" value="Create" />
