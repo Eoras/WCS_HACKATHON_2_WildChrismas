@@ -1,4 +1,10 @@
-WildChristmas
-=============
+# Liste au père noël
+- **HACKATHON** - *WildChrismas*
+- *0000_Hackathon/171109_Hackathon_2_WhildChrismas*
+----
 
-A Symfony project created on November 9, 2017, 10:40 am.
+A venir ... ;)
+
+> [WildCodeSchool](https://wildcodeschool.fr/)
+
+
