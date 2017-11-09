@@ -42,8 +42,9 @@ class Gift
      * @var bool
      *
      * @ORM\Column(name="build", type="boolean")
+     *
      */
-    private $build;
+    private $build = false;
 
 
     /**

@@ -12,6 +12,7 @@
                 <th>Address</th>
                 <th>City</th>
                 <th>Comment</th>
+                <th>Continent</th>
                 <th>Ship</th>
                 <th>Actions</th>
             </tr>
@@ -25,6 +26,7 @@
                 <td>{{ child.address }}</td>
                 <td>{{ child.city }}</td>
                 <td>{{ child.comment }}</td>
+                <td>{{ child.country.name }}</td>
                 <td>{% if child.ship %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
