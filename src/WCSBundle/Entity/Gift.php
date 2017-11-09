@@ -14,7 +14,7 @@ class Gift
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="WCSBundle\Entity\Child", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="WCSBundle\Entity\Child", inversedBy="gifts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $child;

@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Continent
 {
     /**
-     * @ORM\OneToMany(targetEntity="WCSBundle\Entity\Country", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="WCSBundle\Entity\Country", mappedBy="continent")
      */
     private $countries;
 

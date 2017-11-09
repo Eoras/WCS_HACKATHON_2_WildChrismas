@@ -19,7 +19,7 @@ class Country
 
     /**
      *
-     *@ORM\OneToMany(targetEntity="WCSBundle\Entity\Child", mappedBy="child")
+     *@ORM\OneToMany(targetEntity="WCSBundle\Entity\Child", mappedBy="country")
      */
     private $children;
 

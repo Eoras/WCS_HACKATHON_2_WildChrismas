@@ -18,13 +18,13 @@ class Child
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="WCSBundle\Entity\Country", inversedBy="countries")
+     * @ORM\ManyToOne(targetEntity="WCSBundle\Entity\Country", inversedBy="children")
      * @ORM\JoinColumn(nullable=false)
      */
     private $country;
 
     /**
-     * @ORM\OneToMany(targetEntity="WCSBundle\Entity\Gift", mappedBy="gift")
+     * @ORM\OneToMany(targetEntity="WCSBundle\Entity\Gift", mappedBy="child", cascade={"remove"})
      */
     private $gifts;
 
