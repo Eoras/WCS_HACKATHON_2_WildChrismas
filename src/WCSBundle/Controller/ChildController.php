@@ -48,7 +48,7 @@ class ChildController extends Controller
             $em->persist($child);
             $em->flush();
 
-            return $this->redirectToRoute('child_show', array('id' => $child->getId()));
+            return $this->redirectToRoute('gift_new', array('child_id' => $child->getId()));
         }
 
         return $this->render('child/new.html.twig', array(
