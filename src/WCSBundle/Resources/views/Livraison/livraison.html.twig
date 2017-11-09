@@ -1,0 +1,31 @@
+{% extends "WCSBundle::base.html.twig" %}
+{% block titlePage %}{{ parent() }} - Livraison{% endblock %}
+{% block content %}
+    {% for continent in continents %}
+        <h1>{{ continent.name }}</h1>
+        {% for country in continent.countries %}
+            {% if country.children|length > 0 %}
+                <ul>{{ country.name }}<br>
+            {% endif %}
+            {% for child in country.children %}
+                {% set foo = '1' %}
+                {% if child.gifts|length > 0 %}
+                    {% for gift in child.gifts %}
+                        {% if gift.build == 1 %}
+                            {% if foo == 1 %}
+                                {{ child.name }}
+                                {% set foo = '0' %}
+                            {% endif %}
+                            <ul>
+                                <li><b>{{ gift.name }}</b>
+                                    <small>{{ child.address }}</small>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
