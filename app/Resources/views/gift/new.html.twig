@@ -1,16 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <h1>La liste de mes cadeaux</h1>{{ child.name }}
+    <h1 class="text-center child_titre">
+        <span class="glyphicon glyphicon-gift"></span> <span class="">Ma liste de cadeaux</span>
+        <span class="glyphicon glyphicon-gift"></span>
+    </h1>
+
+    <h3 class="text-center">Bonjour {{ child.name }}, quels cadeaux veux-tu pour Noël?</h3>
+
 {% if child.gifts|length < 9 %}
-<div class="form-group">
+
     {{ form_start(form) }}
-
-        {{ form_label(form.name, 'Jouet : ') }}
-        {{ form_widget(form.name) }}
-        {{ form_errors(form.name) }}
-
-        <input type="submit" value="Create" />
+    <div class="form-group text-center">
+    {{ form_label(form.name, 'Jouet') }}<br/>
+    {{ form_widget(form.name) }}
+    {{ form_errors(form.name) }}
+    </div>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-danger">
+            <span class="glyphicon glyphicon-bell">
+            </span> Ajouter un cadeau <span class="glyphicon glyphicon-bell"></span>
+        </button>
     {{ form_end(form) }}
     </div>
 {% endif %}
