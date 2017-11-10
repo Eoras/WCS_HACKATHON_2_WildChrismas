@@ -31,26 +31,26 @@
                                             {% for child in country.children %}
                                                 {% set foo = '1' %}
                                                 {% if child.gifts|length > 0 %}
-                                                    {% for gift in child.gifts %}
-                                                        <div class="panel panel-default col-xs-11 col-xs-offset-1">
-
+                                                    <div class="panel panel-default col-xs-11 col-xs-offset-1">
                                                         <div class="panel-body">
-                                                        {% if gift.build == 1 %}
-                                                            {% if foo == 1 %}
-                                                                <h4>
-                                                                    {{ child.name }} -
-                                                                    <small>{{ child.address }}</small>
-                                                                </h4>
-                                                                {% set foo = '0' %}
-                                                            {% endif %}
-                                                            <ul>
-                                                                <li><i>{{ gift.name }}</i>
-                                                                </li>
-                                                            </ul>
-                                                            </div>
-                                                            </div>
-                                                        {% endif %}
-                                                    {% endfor %}
+                                                            {% for gift in child.gifts %}
+
+                                                                {% if gift.build == 1 %}
+                                                                    {% if foo == 1 %}
+                                                                        <h4>
+                                                                            {{ child.name }} -
+                                                                            <small>{{ child.address }}</small>
+                                                                        </h4>
+                                                                        {% set foo = '0' %}
+                                                                    {% endif %}
+                                                                    <li>
+                                                                        <i>{{ gift.name }}</i>
+                                                                    </li>
+                                                                {% endif %}
+
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
                                                 {% endif %}
                                             {% endfor %}
                                         </div>
