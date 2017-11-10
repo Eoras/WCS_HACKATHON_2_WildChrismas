@@ -28,7 +28,7 @@ class LivraisonController extends Controller
     {
         $password = 'test';
         if (empty($_POST['submit']) or $_POST['pass'] != $password) {
-            $error = "Tu n'es pas le Père Noël !";
+            $error = "Tu ne peut pas rentrer si tu n'es pas le Père Noël ! HO HO HO !!!";
             return $this->render('WCSBundle:Livraison:admin.html.twig', [
                 'error' => $error,
             ]);
