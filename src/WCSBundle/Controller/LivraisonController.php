@@ -8,16 +8,21 @@
 
 namespace WCSBundle\Controller;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use WCSBundle\Entity\Child;
+use WCSBundle\Repository\ChildRepository;
 use WCSBundle\Repository\continentRepository;
+use WCSBundle\WCSBundle;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 
 
 class LivraisonController extends Controller
 {
     /**
-     * @Route("/Livraison")
+     * @Route("/Livraison", name="livraison")
      */
     public function indexAction()
     {
@@ -30,6 +35,27 @@ class LivraisonController extends Controller
         }
         else {
 
+        if (!empty($_POST['id'])) {
+
+            $repository = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('WCSBundle:Child');
+
+            $child = $repository->find($_POST['id']);
+
+            $form = $this->createDeleteForm($child);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($child);
+            $em->flush();
+
+
+            return $this->redirectToRoute('livraison');
+        }
+
+        $continentManager = $this->getDoctrine()->getManager();
+        $continents = $continentManager->getRepository('WCSBundle:Continent')->findAll();
+
             $continentManager = $this->getDoctrine()->getManager();
             $continents = $continentManager->getRepository('WCSBundle:Continent')->findAll();
 
@@ -38,4 +64,13 @@ class LivraisonController extends Controller
             ]);
         }
     }
+    private function createDeleteForm(Child $child)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('child_delete', array('id' => $child->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
+    }
+
 }
