@@ -1,16 +1,14 @@
 {% extends "WCSBundle::base.html.twig" %}
-{% block titlePage %}{{ parent() }} - Livraison{% endblock %}
+{% block titlePage %}{{ parent() }} - Fabrication{% endblock %}
 {% block content %}
     <hr/>
-    <div class="panel bla">
-        <h3 class="text-center">Livraisons à faire le 24 décembre
-        </h3><div class="col-md-12 text-center"><a href="Deconnection" class="btn btn-danger">J'ai fini !</a></div>
-        <br/><br/><br/>
+    <div class="well well-sm">
+        <h3>Fabrications Wild Christmas<a href="Deconnection" class="btn btn-default btn-xs pull-right">Déconnection</a></h3>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             {% for continent in continents %}
-                <div class="panel panel-danger col-md-offset-2 col-md-8">
+                <div class="panel panel-warning">
                     <div class="panel-heading" role="tab" id="heading{{ continent.id }}">
-                        <p class="panel-title text-center">
+                        <h1 class="panel-title">
                             <a {{ loop.first ? "" : "class='collapsed'" }} role="button" data-toggle="collapse"
                                                                            data-parent="#accordion"
                                                                            href="#collapse{{ continent.id }}"
@@ -18,7 +16,7 @@
                                                                            aria-controls="collapse{{ continent.id }}">
                                 {{ continent.name }}
                             </a>
-                        </p>
+                        </h1>
                     </div>
                     <div id="collapse{{ continent.id }}" class="panel-collapse collapse {{ loop.first ? "in" : "" }}"
                          role="tabpanel" aria-labelledby="heading{{ continent.id }}">
@@ -36,20 +34,21 @@
                                                     <div class="panel panel-default col-xs-12 tesst">
                                                         <div class="panel-body tesst">
                                                             {% for gift in child.gifts %}
-                                                                {% if gift.build == 1 %}
+                                                                {% if gift.build != 1 %}
                                                                     {% if foo == 1 %}
-                                                                        <form action="" method="post">
-                                                                        <h4>
-                                                                            {{ child.name }} -
-                                                                            <small>{{ child.address }}</small>
-                                                                            <input type="hidden" name="id" value="{{ child.id }}">
-                                                                            <button class="btn btn-danger btn-sm pull-right">Livré</button>
-                                                                        </h4>
-                                                                        </form>
+                                                                            <h4>
+                                                                                {{ child.name }} -
+                                                                                <small>{{ child.address }}</small>
+                                                                                </h4>
                                                                         {% set foo = '0' %}
                                                                     {% endif %}
                                                                     <li>
+                                                                        <form action="" method="post">
                                                                         <i>{{ gift.name }}</i>
+                                                                            <input type="checkbox" name="build" value="{{ gift.id }}" class="form-control" />
+                                                                            <input type="hidden" name="bool" value="{{ gift.build }}" />
+                                                                            <button class="btn btn-danger btn-sm pull-right" name="submit" value="submit" >Fabriqué</button>
+                                                                        </form>
                                                                     </li>
                                                                 {% endif %}
 
