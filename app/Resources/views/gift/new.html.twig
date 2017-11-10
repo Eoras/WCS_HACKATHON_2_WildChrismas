@@ -2,10 +2,10 @@
 
 {% block content %}
     <h1>La liste de mes cadeaux</h1>{{ child.name }}
-
-    <div class="form-group">
+{% if child.gifts|length < 9 %}
+<div class="form-group">
     {{ form_start(form) }}
-{{ child.id }}
+
         {{ form_label(form.name, 'Jouet : ') }}
         {{ form_widget(form.name) }}
         {{ form_errors(form.name) }}
@@ -13,6 +13,7 @@
         <input type="submit" value="Create" />
     {{ form_end(form) }}
     </div>
+{% endif %}
 {% for gift in gifts %}
     {{ gift.name }}
 {% endfor %}

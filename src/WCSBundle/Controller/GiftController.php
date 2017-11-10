@@ -36,6 +36,7 @@ class GiftController extends Controller
      *
      * @Route("/new/{child_id}", name="gift_new")
      * @Method({"GET", "POST"})
+     *
      */
     public function newAction(Request $request, $child_id)
     {
@@ -53,6 +54,7 @@ class GiftController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $gift->setChild($child);
+            $gift->setBuild(false);
             $em->persist($gift);
             $em->flush();
 
