@@ -21,12 +21,21 @@ class LivraisonController extends Controller
      */
     public function indexAction()
     {
-        $continentManager = $this->getDoctrine()->getManager();
-        $continents = $continentManager->getRepository('WCSBundle:Continent')->findAll();
+        $password = 'test';
+        if (empty($_POST['submit']) or $_POST['pass'] != $password) {
+            $error = "Tu n'es pas le Père Noël !";
+            return $this->render('WCSBundle:Livraison:admin.html.twig', [
+                'error' => $error,
+            ]);
+        }
+        else {
 
-        return $this->render('WCSBundle:Livraison:livraison.html.twig',[
-            'continents' => $continents,
-        ]);
+            $continentManager = $this->getDoctrine()->getManager();
+            $continents = $continentManager->getRepository('WCSBundle:Continent')->findAll();
+
+            return $this->render('WCSBundle:Livraison:livraison.html.twig', [
+                'continents' => $continents,
+            ]);
+        }
     }
-
 }
