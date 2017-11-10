@@ -1,8 +1,19 @@
 {% extends "WCSBundle::base.html.twig" %}
 {% block titlePage %}{{ parent() }} - Livraison{% endblock %}
 {% block content %}
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
     {% for continent in continents %}
-        <h1>{{ continent.name }}</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading{{ continent.id }}">
+            <h4 class="panel-title">
+                <a {{ loop.first ? "" : "class='collapsed'" }} role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ continent.id }}" aria-expanded="{{ loop.first ? "true" : "false" }}" aria-controls="collapse{{ continent.id }}">
+                    {{ continent.name }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapse{{ continent.id }}" class="panel-collapse collapse {{ loop.first ? "in" : "" }}" role="tabpanel" aria-labelledby="heading{{ continent.id }}">
+            <div class="panel-body">
         {% for country in continent.countries %}
             {% if country.children|length > 0 %}
                 <ul>{{ country.name }}<br>
@@ -27,5 +38,9 @@
             {% endfor %}
             </ul>
         {% endfor %}
+            </div>
+        </div>
+    </div>
     {% endfor %}
+    </div>
 {% endblock %}
