@@ -7,13 +7,19 @@
     padding-top: 150px;
 }
 
+.l_passwd{
+    width: 400px;
+    margin-left: 100px;
+}
+
 .l_error{
     font-family: "chrioc";
     text-align: center;
-    color: #000000;
+    color: black;
+    font-size: 40px;
 }
 
-.l_backround{
+.l_background{
     background: url("../../assets/images/chrismatsTheme.jpg") no-repeat center top fixed ;
     background-size: cover;
     width: 100vw;
@@ -22,9 +28,9 @@
 }
 
 .l_btn{
-    background-color: #ac2925;
+    background-color: rgb(201,48,44);
     font-family: "chrioc";
-    color: black;
+    color: white;
 }
 
 .l_img {

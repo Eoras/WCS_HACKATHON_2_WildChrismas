@@ -60,7 +60,7 @@ class LivraisonController extends Controller
             return $this->redirectToRoute('livraison');
 
         } else {
-            $error = "Tu n'es pas le Père Noël !";
+            $error = "ALORS PROUVEZ-LE";
             return $this->render('WCSBundle:Livraison:admin.html.twig', [
                 'error' => $error,
             ]);
