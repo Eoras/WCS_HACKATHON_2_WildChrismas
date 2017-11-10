@@ -6,37 +6,41 @@
     {{ form_start(form) }}
 
     <div class="form-group text-center">
-    {{ form_label(form.name, 'Mon nom')}}
+    {{ form_label(form.name, 'Mon nom')}}<br/>
     {{ form_widget(form.name) }}
     {{ form_errors(form.name) }}
     </div>
 
     <div class="form-group text-center">
-    {{ form_label(form.firstname, 'Mon prénom') }}
+    {{ form_label(form.firstname, 'Mon prénom') }}<br/>
     {{ form_widget(form.firstname) }}
     {{ form_errors(form.firstname) }}
     </div>
 
     <div class="form-group text-center">
-    {{ form_label(form.address, 'Mon adresse') }}
+    {{ form_label(form.address, 'Mon adresse') }}<br/>
     {{ form_widget(form.address) }}
     {{ form_errors(form.address) }}
     </div>
 
     <div class="form-group text-center">
-    {{ form_label(form.city, 'Ma ville') }}
+    {{ form_label(form.city, 'Ma ville') }}<br/>
     {{ form_widget(form.city) }}
     {{ form_errors(form.city) }}
     </div>
 
     <div class="form-group text-center">
-    {{ form_label(form.comment, 'Mon petit mot au père Noël') }}
+    {{ form_label(form.comment, 'Mon petit mot au père Noël') }}<br/>
     {{ form_widget(form.comment) }}
     {{ form_errors(form.comment) }}
     </div>
 
-    {{ form_widget(form) }}
-    <input type="submit" value="Create" />
+    <div class="form-group text-center">
+        {{ form_label(form.country, 'Mon pays') }}<br/>
+        {{ form_widget(form.country) }}
+        {{ form_errors(form.country) }}<br/><br/>
+    <input type="submit" value="Choisir mes cadeaux" />
     {{ form_end(form) }}
+    </div>
 
 {% endblock %}

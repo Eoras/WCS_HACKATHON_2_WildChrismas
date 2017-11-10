@@ -13,7 +13,7 @@ class ChildType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('firstname')->add('address')->add('city')->add('comment')->add('ship')->add('country');
+        $builder->add('name')->add('firstname')->add('address')->add('city')->add('comment')->add('country');
     }
     
     /**
