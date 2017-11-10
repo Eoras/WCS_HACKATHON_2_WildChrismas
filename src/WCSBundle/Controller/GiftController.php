@@ -43,18 +43,21 @@ class GiftController extends Controller
         $form = $this->createForm('WCSBundle\Form\GiftType', $gift);
         $form->handleRequest($request);
 
+        $emm = $this->getDoctrine()->getManager();
+        $gifts = $emm->getRepository('WCSBundle:Gift')->findBy(array('child' => $child_id));
+
         $em = $this->getDoctrine()->getManager();
 
         $child = $em->getRepository('WCSBundle:Child')->find($child_id);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $gift->setChild($child);
             $em->persist($gift);
             $em->flush();
 
             return $this->redirectToRoute('gift_new', array(
-                'id' => $gift->getId(),
-                'child'=> $child,
+                'child_id' => $child->getId(),
                 ));
         }
 
@@ -62,6 +65,7 @@ class GiftController extends Controller
             'gift' => $gift,
             'form' => $form->createView(),
             'child'=> $child,
+            'gifts' => $gifts,
         ));
     }
 
