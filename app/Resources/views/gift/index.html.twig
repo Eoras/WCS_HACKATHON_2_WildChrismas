@@ -9,7 +9,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Build</th>
-                <th>Actions</th>
+                <th>Enfant</th>
             </tr>
         </thead>
         <tbody>
@@ -18,24 +18,9 @@
                 <td><a href="{{ path('gift_show', { 'id': gift.id }) }}">{{ gift.id }}</a></td>
                 <td>{{ gift.name }}</td>
                 <td>{% if gift.build %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('gift_show', { 'id': gift.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('gift_edit', { 'id': gift.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                <td>{{ gift.child }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('gift_new') }}">Create a new gift</a>
-        </li>
-    </ul>
 {% endblock %}
