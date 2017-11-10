@@ -1,6 +1,13 @@
-.background{
+.backgroundLetter{
     background: url("../../images/back2.jpg") no-repeat center top fixed;
     background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.backgroundGift{
+    background: url("../../images/back.jpg") no-repeat center top fixed;
     width: 100vw;
     height: 100vh;
     z-index: -1;
