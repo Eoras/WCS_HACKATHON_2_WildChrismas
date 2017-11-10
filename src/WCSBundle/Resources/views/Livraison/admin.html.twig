@@ -1,17 +1,20 @@
 {% extends "WCSBundle::base.html.twig" %}
 {% block titlePage %}{{ parent() }} - Admin{% endblock %}
 {% block content %}
-    <div class="row">
-        <div class="col-md-offset-4 col-md-4 l_admin">
-            <img src="http://www.tolkiendrim.com/wp-content/uploads/2015/12/P%C3%A8re-Gandalf.jpg" class="img-responsive">
-            <form action="" method="post" class="form-group">
-                <input type="password" name="pass" class="form-control">
-                <button type="submit" name="submit" value="submit" class="btn btn-block btn-default">Submit</button>
-            </form>
-            <div class="l_error">
-                {% if error %}
-                    {{ error }}
-                {% endif %}
+    <div class="l_backround">
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4 l_admin">
+                <label for="image" class="l_img">HO HO HO MOTHERFUCKERS !</label>
+                <img src="http://www.tolkiendrim.com/wp-content/uploads/2015/12/P%C3%A8re-Gandalf.jpg" class="img-responsive img-circle l_img">
+                <form action="" method="post" class="form-group">
+                    <input type="password" name="pass" class="form-control">
+                    <button type="submit" name="submit" value="submit" class="btn btn-block btn-default l_btn">Submit</button>
+                </form>
+                <div class="l_error">
+                    {% if error %}
+                        {{ error }}
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
