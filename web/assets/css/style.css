@@ -4,30 +4,32 @@
 }
 
 .l_admin{
-    padding-top: 190px;
+    padding-top: 150px;
 }
 
 .l_error{
     font-family: "chrioc";
     text-align: center;
-    color: #d0e9c6;
+    color: #000000;
 }
 
 .l_backround{
-    background-image: url("../../assets/image/christmasTheme.png");
-    height: 1080px;
-    max-height: 940px;
+    background: url("../../assets/images/chrismatsTheme.jpg") no-repeat center top fixed ;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+
 }
 
 .l_btn{
     background-color: #ac2925;
     font-family: "chrioc";
-    color: white;
+    color: black;
 }
 
 .l_img {
     font-family: "chrioc";
-    color: #d0e9c6;
+    color: #000000;
 }
 
 .backgroundLetter{
