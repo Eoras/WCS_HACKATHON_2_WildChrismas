@@ -31,16 +31,20 @@
                                             {% for child in country.children %}
                                                 {% set foo = '1' %}
                                                 {% if child.gifts|length > 0 %}
-                                                    <div class="panel panel-default col-xs-11 col-xs-offset-1">
-                                                        <div class="panel-body">
+                                                    <div class="panel panel-default col-xs-12 tesst">
+                                                        <div class="panel-body tesst">
                                                             {% for gift in child.gifts %}
-
                                                                 {% if gift.build == 1 %}
                                                                     {% if foo == 1 %}
+                                                                        <form action="" method="post">
+
                                                                         <h4>
                                                                             {{ child.name }} -
                                                                             <small>{{ child.address }}</small>
+                                                                            <input type="hidden" name="id" value="{{ child.id }}">
+                                                                            <button class="btn btn-danger btn-sm pull-right">Livré</button>
                                                                         </h4>
+                                                                        </form>
                                                                         {% set foo = '0' %}
                                                                     {% endif %}
                                                                     <li>
