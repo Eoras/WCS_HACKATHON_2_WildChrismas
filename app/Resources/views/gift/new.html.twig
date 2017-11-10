@@ -24,16 +24,21 @@
             </span> Ajouter un cadeau <span class="glyphicon glyphicon-bell"></span>
         </button>
     {{ form_end(form) }}
+
     </div>
 
 {% endif %}
+
+    {% set cadeau = 0 %}
+{% for gift in gifts %}
+    <li class="text-center white">{{ gift.name }}</li>
+        {% set cadeau = cadeau + 1 %}
+{% endfor %}
     {% if child.gifts|length >= 9 %}
         <p class="text-center white">Tu as atteint la limite du nombre de cadeaux pour ce Noël !</p>
     {% endif %}
-        <h3 class="text-center white">Ta liste :</h3>
-{% for gift in gifts %}
-    <li class="text-center white">{{ gift.name }}</li>
-{% endfor %}
+    <h3 class="text-center white">Ta liste contient {{ cadeau }} cadeaux </h3>
+
 
 </div>
 {% endblock %}
