@@ -1,7 +1,54 @@
+
+@font-face {
+    font-family: "chrioc";
+    src: url('../../assets/fonts/KGCandyCaneStripe/KGCandyCaneStripe.ttf');
+}
+
 .l_admin{
-    padding-top: 100px;
+    padding-top: 190px;
 }
 
 .l_error{
+    font-family: "chrioc";
     text-align: center;
+    color: #d0e9c6;
+}
+
+.l_backround{
+    background-image: url("../../assets/image/christmasTheme.png");
+    height: 1080px;
+    max-height: 940px;
+}
+
+.l_btn{
+    background-color: #ac2925;
+    font-family: "chrioc";
+    color: white;
+}
+
+.l_img{
+    font-family: "chrioc";
+    color: #d0e9c6;
+
+.background{
+    background: url("../../images/back2.jpg") no-repeat center top fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.white{
+    color: white;
+}
+
+.glyphicon{
+    color: rgb(201,48,44);
+}
+
+select, input, textarea{
+    color: black;
+    width: 600px;
+    margin-bottom: 20px;
+
 }

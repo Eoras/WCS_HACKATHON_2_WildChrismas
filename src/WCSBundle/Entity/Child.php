@@ -77,7 +77,7 @@ class Child
      *
      * @ORM\Column(name="ship", type="boolean")
      */
-    private $ship;
+    private $ship=false;
 
     /**
      * Get id

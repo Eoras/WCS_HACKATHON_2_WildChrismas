@@ -34,26 +34,40 @@ class GiftController extends Controller
     /**
      * Creates a new gift entity.
      *
-     * @Route("/new", name="gift_new")
+     * @Route("/new/{child_id}", name="gift_new")
      * @Method({"GET", "POST"})
+     *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $child_id)
     {
         $gift = new Gift();
         $form = $this->createForm('WCSBundle\Form\GiftType', $gift);
         $form->handleRequest($request);
 
+        $emm = $this->getDoctrine()->getManager();
+        $gifts = $emm->getRepository('WCSBundle:Gift')->findBy(array('child' => $child_id));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $child = $em->getRepository('WCSBundle:Child')->find($child_id);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $gift->setChild($child);
+            $gift->setBuild(false);
             $em->persist($gift);
             $em->flush();
 
-            return $this->redirectToRoute('gift_show', array('id' => $gift->getId()));
+            return $this->redirectToRoute('gift_new', array(
+                'child_id' => $child->getId(),
+                ));
         }
 
         return $this->render('gift/new.html.twig', array(
             'gift' => $gift,
             'form' => $form->createView(),
+            'child'=> $child,
+            'gifts' => $gifts,
         ));
     }
 
