@@ -1,46 +1,68 @@
 {% extends "WCSBundle::base.html.twig" %}
 {% block titlePage %}{{ parent() }} - Livraison{% endblock %}
 {% block content %}
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <hr/>
+    <div class="well well-sm">
+        <h1>Livraisons</h1>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            {% for continent in continents %}
+                <div class="panel panel-warning">
+                    <div class="panel-heading" role="tab" id="heading{{ continent.id }}">
+                        <h1 class="panel-title">
+                            <a {{ loop.first ? "" : "class='collapsed'" }} role="button" data-toggle="collapse"
+                                                                           data-parent="#accordion"
+                                                                           href="#collapse{{ continent.id }}"
+                                                                           aria-expanded="{{ loop.first ? "true" : "false" }}"
+                                                                           aria-controls="collapse{{ continent.id }}">
+                                {{ continent.name }}
+                            </a>
+                        </h1>
+                    </div>
+                    <div id="collapse{{ continent.id }}" class="panel-collapse collapse {{ loop.first ? "in" : "" }}"
+                         role="tabpanel" aria-labelledby="heading{{ continent.id }}">
+                        <div class="panel-body">
+                            {% for country in continent.countries %}
+                                {% if country.children|length > 0 %}
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading" role="tab" id="heading">
+                                            <h1 class="panel-title">{{ country.name }}</h1>
+                                        </div>
+                                        <div class="panel-body">
+                                            {% for child in country.children %}
+                                                {% set foo = '1' %}
+                                                {% if child.gifts|length > 0 %}
+                                                    {% for gift in child.gifts %}
+                                                        <div class="panel panel-default col-xs-11 col-xs-offset-1">
 
-    {% for continent in continents %}
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="heading{{ continent.id }}">
-            <h4 class="panel-title">
-                <a {{ loop.first ? "" : "class='collapsed'" }} role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ continent.id }}" aria-expanded="{{ loop.first ? "true" : "false" }}" aria-controls="collapse{{ continent.id }}">
-                    {{ continent.name }}
-                </a>
-            </h4>
-        </div>
-        <div id="collapse{{ continent.id }}" class="panel-collapse collapse {{ loop.first ? "in" : "" }}" role="tabpanel" aria-labelledby="heading{{ continent.id }}">
-            <div class="panel-body">
-        {% for country in continent.countries %}
-            {% if country.children|length > 0 %}
-                <ul>{{ country.name }}<br>
-            {% endif %}
-            {% for child in country.children %}
-                {% set foo = '1' %}
-                {% if child.gifts|length > 0 %}
-                    {% for gift in child.gifts %}
-                        {% if gift.build == 1 %}
-                            {% if foo == 1 %}
-                                {{ child.name }}
-                                {% set foo = '0' %}
-                            {% endif %}
-                            <ul>
-                                <li><b>{{ gift.name }}</b>
-                                    <small>{{ child.address }}</small>
-                                </li>
-                            </ul>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
+                                                        <div class="panel-body">
+                                                        {% if gift.build == 1 %}
+                                                            {% if foo == 1 %}
+                                                                <h4>
+                                                                    {{ child.name }} -
+                                                                    <small>{{ child.address }}</small>
+                                                                </h4>
+                                                                {% set foo = '0' %}
+                                                            {% endif %}
+                                                            <ul>
+                                                                <li><i>{{ gift.name }}</i>
+                                                                </li>
+                                                            </ul>
+                                                            </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-            </ul>
-        {% endfor %}
-            </div>
         </div>
     </div>
-    {% endfor %}
-    </div>
+
 {% endblock %}
