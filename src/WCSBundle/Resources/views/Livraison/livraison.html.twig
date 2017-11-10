@@ -2,7 +2,6 @@
 {% block titlePage %}{{ parent() }} - Livraison{% endblock %}
 {% block content %}
     <hr/>
-    <div class="panel bla">
         <h3 class="text-center">Livraisons à faire le 24 décembre
         </h3><div class="col-md-12 text-center"><a href="Deconnection" class="btn btn-danger">J'ai fini !</a></div>
         <br/><br/><br/>
@@ -25,7 +24,7 @@
                         <div class="panel-body">
                             {% for country in continent.countries %}
                                 {% if country.children|length > 0 %}
-                                    <div class="panel panel-info">
+                                    <div class="panel panel-warning">
                                         <div class="panel-heading" role="tab" id="heading">
                                             <h1 class="panel-title">{{ country.name }}</h1>
                                         </div>
@@ -39,17 +38,18 @@
                                                                 {% if gift.build == 1 %}
                                                                     {% if foo == 1 %}
                                                                         <form action="" method="post">
-                                                                        <h4>
-                                                                            {{ child.name }} -
-                                                                            <small>{{ child.address }}</small>
+
+                                                                           Nom de l'enfant : {{ child.name }}<br/>
+                                                                            Adresse : {{ child.address }}<br/><br/>
                                                                             <input type="hidden" name="id" value="{{ child.id }}">
                                                                             <button class="btn btn-danger btn-sm pull-right">Livré</button>
-                                                                        </h4>
+
                                                                         </form>
                                                                         {% set foo = '0' %}
+                                                                        Liste des cadeaux :
                                                                     {% endif %}
                                                                     <li>
-                                                                        <i>{{ gift.name }}</i>
+                                                                        {{ gift.name }}
                                                                     </li>
                                                                 {% endif %}
 
@@ -68,6 +68,5 @@
                 </div>
             {% endfor %}
         </div>
-    </div>
 
 {% endblock %}

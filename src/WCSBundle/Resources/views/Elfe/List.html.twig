@@ -1,37 +1,46 @@
 {% extends "WCSBundle::base.html.twig" %}
 {% block titlePage %}{{ parent() }} - Admin{% endblock %}
 {% block content %}
-    <div class="well well-sm">
-        <h3>Fabrications Wild Christmas</h3>
-        <div class="col-xs-2">
+    <div class="col-sm-offset-2 col-sm-8">
+        <h3 class="alert alert-danger text-center">Jouets à fabriquer</h3>
+
+
             {% for continent in continents %}
                 {% for country in continent.countries %}
                     {% for child in country.children %}
+
                         {% set foo = '1' %}
                         {% if child.gifts|length > 0 %}
+
                             {% for gift in child.gifts %}
+
                                 {% if gift.build != 1 %}
+
                                     {% if foo == 1 %}
-                                        <h3>{{ child.id }} {{ child.firstname }}</h3>
+
+                                        <h3>{{ child.firstname }}</h3>
                                         {% set foo = '0' %}
                                     {% endif %}
-                                        <p>Jouet n°: {{ gift.id }} - {{ gift.name|capitalize }} </p>
-                                        <form method="post" action="">
+                                        <p>Nom du jouet : {{ gift.name|capitalize }}</p>
+                                        <form method="post" action="" style="display:flex;">
                                             <input type="checkbox" name="build" value="{{ gift.id }}"
                                                    class="form-control">
                                             <input type="hidden" name="bool" value="{{ gift.build }}">
-                                            <button type="submit" name="submit" value="submit"
-                                                    class="btn btn-default form-control">submit
-                                            </button>
+                                            <button type="submit" name="submit" style="width: 100px;" value="submit"
+                                                    class="btn btn-danger form-control l_btn center-block">Fabriqué
+                                            </button><br/>
                                         </form>
 
-
                                 {% endif %}
+
                             {% endfor %}
+
                         {% endif %}
+
                     {% endfor %}
+
                 {% endfor %}
             {% endfor %}
         </div>
-    </div>
+
 {% endblock %}
